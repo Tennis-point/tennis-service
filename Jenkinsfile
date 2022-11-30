@@ -36,18 +36,21 @@ pipeline {
 
 private String getE2EDir(String projectName) {
 
-    if (projectName == "eden-collector") {
+    if (projectName == null || !projectName.contains("eden")
+        || projectName == "eden-collector" || projectName == "eden-dispatcher"
+        || projectName == "eden-abe") {
         return "tech.viacom.events.e2e.*";
     }
 
-    String folderName = ""
+    String folderName;
     if (projectName.contains('adobe-my5')) {
-        folderName = projectName.tokenize("-")[1] + "." + projectName.tokenize("-")[2];
+        folderName = projectName.tokenize("-")[1] + "," + projectName.tokenize("-")[2];
     } else if (projectName.contains('adobe-playplexplus')) {
         folderName = projectName.tokenize("-")[1] + ".playplex";
     } else {
         folderName = projectName.tokenize("-")[1];
     }
+
     e2eDir = "tech.viacom.events.e2e.${folderName}.*";
     return e2eDir
 }
