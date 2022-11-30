@@ -11,7 +11,8 @@ pipeline {
         stage('Docker node test') {
               steps {
                 // Steps run in node:7-alpine docker container on docker agent
-                sh 'echo "here"'
+                sh 'echo "here "'
+                println "params=" + params.PROJECT_NAME
               }
             }
 
