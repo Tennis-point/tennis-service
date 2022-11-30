@@ -12,11 +12,8 @@ pipeline {
 
         stage('Docker node test') {
               agent {
-                dockerTool {
-                  // Set both label and image
-                  label 'docker'
-                  image 'node:7-alpine'
-                  args '--name docker-node' // list any args
+                docker {
+                  dockerfile true
                 }
               }
               steps {
