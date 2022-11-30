@@ -4,9 +4,7 @@ pipeline {
         dockerTool "docke-jenkins"
     }
 
-    agent {
-        any
-    }
+    agent any
 
     stages {
 
