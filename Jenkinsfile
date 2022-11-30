@@ -1,5 +1,9 @@
 pipeline {
 
+    tools {
+        docker "docker"
+    }
+
     agent {
         label 'docker'
     }
