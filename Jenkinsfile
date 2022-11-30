@@ -22,10 +22,8 @@ pipeline {
         stage('build') {
             steps {
                 sh 'echo "Hello World"'
-                if (params.PROJECT_NAME == 'eden-collector') {
-                    println 'inside the if !'
-                }
                 println getE2EDir(params.PROJECT_NAME)
+                sh 'echo ${getE2EDir(params.PROJECT_NAME)}'
             }
         }
         stage('test') {
@@ -37,6 +35,11 @@ pipeline {
 }
 
 private String getE2EDir(String projectName) {
+
+    if (projectName == "eden-collector") {
+        return "tech.viacom.events.e2e.*";
+    }
+
     String folderName = ""
     if (projectName.contains('adobe-my5')) {
         folderName = projectName.tokenize("-")[1] + "." + projectName.tokenize("-")[2];
