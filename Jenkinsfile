@@ -23,7 +23,7 @@ pipeline {
             steps {
                 sh 'echo "Hello World"'
                 println getE2EDir(params.PROJECT_NAME)
-                sh 'echo ${getE2EDir(params.PROJECT_NAME)}'
+                sh "echo '${getE2EDir(params.PROJECT_NAME)}'"
             }
         }
         stage('test') {
