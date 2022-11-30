@@ -36,7 +36,7 @@ pipeline {
 
 private String getE2EDir(String projectName) {
 
-    if (projectName == null || !projectName.contains("eden")
+    if (projectName == null || !projectName.startsWith("eden-")
         || projectName == "eden-collector" || projectName == "eden-dispatcher"
         || projectName == "eden-abe") {
         return "tech.viacom.events.e2e.*";
