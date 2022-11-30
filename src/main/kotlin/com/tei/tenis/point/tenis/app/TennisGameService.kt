@@ -3,30 +3,37 @@ package com.tei.tenis.point.tenis.app
 import com.tei.tenis.point.tenis.domain.game.Game
 import com.tei.tenis.point.tenis.domain.game.Player
 import com.tei.tenis.point.tenis.infrastracture.db.GameEntity
-import com.tei.tenis.point.tenis.infrastracture.db.GameRepositoryRedisImpl
+import com.tei.tenis.point.tenis.infrastracture.db.GameMapper
+import com.tei.tenis.point.tenis.infrastracture.db.GameRepositorySql
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+import java.util.*
 
 @Service
-class TennisGameService(val gameRepository: GameRepositoryRedisImpl) {
+class TennisGameService(val gameRepository: GameRepositorySql) {
 
-    fun startGame(userId: String): GameEntity {
+    fun startGame(userId: String): Game {
         // start the game domain object
         val game = Game.startingPoint();
         // save empty game in the db with the user id and timestamp
-        return gameRepository.saveNew(game, userId);
+        return GameMapper().toDomain(gameRepository.save(GameMapper().toEntity(game, userId)));
     }
 
-    fun get(userId: String): Collection<Game> {
-        return gameRepository.findByUserId(userId).map { g -> g.game };
+    fun get(userId: String): Collection<GameEntity> {
+        return gameRepository.findAll().toList();
     }
 
     fun addPoint(id: String, side: String): Game {
-        var gameEntity = gameRepository.findById(id);
-        if (!gameEntity.game.done) {
-            gameEntity.game.addPoint(Player(side));
-            return gameRepository.saveUpdate(id, gameEntity.game);
-        }
+        val gameEntity: GameEntity = gameRepository.findById(id).orElseThrow { throw IllegalStateException("Game with this id does not exist.") };
+        val game = GameMapper().toDomain(gameEntity)
+        game.addPoint(Player(side));
+        val gameEntityUpdated = GameMapper().toEntity(game, gameEntity.userId);
+        val gameEntityUpdatedSaved = gameRepository.save(gameEntityUpdated);
+        return GameMapper().toDomain(gameEntityUpdatedSaved);
+    }
 
-        throw IllegalStateException("This game is already over.");
+    fun gameById(gameId: String): Game {
+        val gameEntity = gameRepository.findById(gameId).orElseThrow { throw IllegalStateException("there is no game for that id") }
+        return GameMapper().toDomain(gameEntity)
     }
 }

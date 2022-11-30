@@ -1,6 +1,6 @@
 package com.tei.tenis.point.tenis.domain.game
 
-class Player (val side:String){
+class Player(val side: String){
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

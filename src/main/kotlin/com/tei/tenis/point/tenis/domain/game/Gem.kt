@@ -1,8 +1,8 @@
 package com.tei.tenis.point.tenis.domain.game
 
 class Gem(var p1Point: TennisPoint, var p2Point: TennisPoint) {
-
-    val tieBreak: TieBreak = TieBreak();
+    var gemId: String? = null
+    val tieBreak: TieBreak = TieBreak()
     var winner: Player? = null
     var done: Boolean = false
     var isTieBreak: Boolean = false

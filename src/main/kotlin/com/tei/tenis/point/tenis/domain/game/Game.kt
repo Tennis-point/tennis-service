@@ -1,7 +1,7 @@
 package com.tei.tenis.point.tenis.domain.game
 
 class Game(val p1: Player, val p2: Player, val sets: MutableList<Set>) {
-
+    var gameId: String? = null
     var winner: Player? = null
     var done: Boolean = false
 

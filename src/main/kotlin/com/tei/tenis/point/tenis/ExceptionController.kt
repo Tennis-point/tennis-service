@@ -1,4 +1,4 @@
-package com.tei.tenis.point.tenis.infrastracture
+package com.tei.tenis.point.tenis
 
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
