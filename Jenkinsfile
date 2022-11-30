@@ -14,7 +14,7 @@ pipeline {
               agent {
                 docker {
                   label 'docker'
-                  image 'gradle:6.7-jdk11
+                  image 'gradle:6.7-jdk11'
                 }
               }
               steps {
