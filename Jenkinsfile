@@ -22,6 +22,9 @@ pipeline {
         stage('build') {
             steps {
                 sh 'echo "Hello World"'
+                if params.PROJECT_NAME == 'eden-collector' {
+                    println 'inside the if !'
+                }
                 println getE2EDir(params.PROJECT_NAME)
             }
         }
