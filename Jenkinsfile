@@ -13,7 +13,9 @@ pipeline {
         stage('Docker node test') {
               agent {
                 docker {
-                  dockerfile true
+                  label 'node'
+                  image 'node:7-alpine'
+                  args '--name node-js' // list any args
                 }
               }
               steps {
