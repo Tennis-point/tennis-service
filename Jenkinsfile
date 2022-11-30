@@ -4,6 +4,9 @@ pipeline {
         dockerTool "docke-jenkins"
     }
 
+    parameters {
+            string(name: 'PROJECT_NAME', defaultValue: 'collector', description: 'Name of the project to run e2e for, by default eden-collector is selected for which all the e2e tests will be executed.')
+        }
     agent any
 
     stages {
