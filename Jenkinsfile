@@ -1,7 +1,7 @@
 pipeline {
 
     tools {
-        dockerTool "dockerTool"
+        dockerTool "docke-jenkins"
     }
 
     agent {
