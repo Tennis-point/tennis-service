@@ -14,8 +14,7 @@ pipeline {
               agent {
                 docker {
                   label 'docker'
-                  image 'node:7-alpine'
-                  args '--name node-js' // list any args
+                  args '--info' // list any args
                 }
               }
               steps {
