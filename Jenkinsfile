@@ -33,7 +33,7 @@ pipeline {
 private String getE2EDir(String projectName) {
     String folderName = ""
     if (projectName.contains('adobe-my5')) {
-        folderName = projectName.tokenize("-")[1] + "," + projectName.tokenize("-")[2];
+        folderName = projectName.tokenize("-")[1] + "." + projectName.tokenize("-")[2];
     } else if (projectName.contains('adobe-playplexplus')) {
         folderName = projectName.tokenize("-")[1] + ".playplex";
     } else {
