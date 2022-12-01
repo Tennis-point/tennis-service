@@ -36,20 +36,20 @@ pipeline {
 
 private String getE2EDir(String projectName) {
 
-    if (projectName == null || !projectName.startsWith("eden-")
-        || projectName == "eden-collector" || projectName == "eden-dispatcher"
-        || projectName == "eden-abe") {
-        return "tech.viacom.events.e2e.*";
-    }
+    Map<String, String> testByProjects = [
+            "eden-dispatcher"        : "tech.viacom.events.e2e.*",
+            "eden-collector"         : "tech.viacom.events.e2e.*",
+            "eden-abe"               : "tech.viacom.events.e2e.*",
+            "eden-my5-adobe"         : "tech.viacom.events.e2e.adobe.my5.*",
+            "eden-adobe-playplexplus": "tech.viacom.events.e2e.adobe.playplex.*",
+            "eden-braze"             : "tech.viacom.events.e2e.braze.*",
+            "eden-adjust"            : "tech.viacom.events.e2e.adjust.*",
+            "eden-pluto"             : "tech.viacom.events.e2e.pluto.*",
+            "eden-google"            : "tech.viacom.events.e2e.google.*",
+            "eden-facebook"          : "tech.viacom.events.e2e.facebook.*",
+            "eden-snapchat"          : "tech.viacom.events.e2e.snapchat.*",
+            "eden-tiktok"            : "tech.viacom.events.e2e.tiktok.*"
+    ]
 
-    String folderName = if (projectName.contains('adobe-my5')) {
-                                projectName.tokenize("-")[1] + "," + projectName.tokenize("-")[2];
-                            } else if (projectName.contains('adobe-playplexplus')) {
-                                projectName.tokenize("-")[1] + ".playplex";
-                            } else {
-                                projectName.tokenize("-")[1];
-                            }
-
-
-    return "tech.viacom.events.e2e.${folderName}.*";
+    return testByProjects[projectName] ?: "tech.viacom.events.e2e.noop.*"
 }
