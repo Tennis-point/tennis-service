@@ -42,15 +42,14 @@ private String getE2EDir(String projectName) {
         return "tech.viacom.events.e2e.*";
     }
 
-    String folderName;
-    if (projectName.contains('adobe-my5')) {
-        folderName = projectName.tokenize("-")[1] + "," + projectName.tokenize("-")[2];
-    } else if (projectName.contains('adobe-playplexplus')) {
-        folderName = projectName.tokenize("-")[1] + ".playplex";
-    } else {
-        folderName = projectName.tokenize("-")[1];
-    }
+    String folderName = if (projectName.contains('adobe-my5')) {
+                                projectName.tokenize("-")[1] + "," + projectName.tokenize("-")[2];
+                            } else if (projectName.contains('adobe-playplexplus')) {
+                                projectName.tokenize("-")[1] + ".playplex";
+                            } else {
+                                projectName.tokenize("-")[1];
+                            }
 
-    e2eDir = "tech.viacom.events.e2e.${folderName}.*";
-    return e2eDir
+
+    return "tech.viacom.events.e2e.${folderName}.*";
 }
