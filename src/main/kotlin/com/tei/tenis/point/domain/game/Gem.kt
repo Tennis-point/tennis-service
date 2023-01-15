@@ -1,4 +1,4 @@
-package com.tei.tenis.point.tenis.domain.game
+package com.tei.tenis.point.domain.game
 
 class Gem(var p1Point: TennisPoint, var p2Point: TennisPoint) {
     var gemId: String? = null

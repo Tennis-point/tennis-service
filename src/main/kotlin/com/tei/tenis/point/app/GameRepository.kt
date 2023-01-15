@@ -1,7 +1,7 @@
-package com.tei.tenis.point.tenis.app
+package com.tei.tenis.point.app
 
-import com.tei.tenis.point.tenis.domain.game.Game
-import com.tei.tenis.point.tenis.infrastracture.db.GameEntity
+import com.tei.tenis.point.domain.game.Game
+import com.tei.tenis.point.infrastracture.db.GameEntity
 
 interface GameRepository {
     fun saveNew(game: Game, userId: String): GameEntity;

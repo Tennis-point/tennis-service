@@ -1,4 +1,4 @@
-package com.tei.tenis.point.tenis.infrastracture.db
+package com.tei.tenis.point.infrastracture.db
 
 import javax.persistence.*;
 

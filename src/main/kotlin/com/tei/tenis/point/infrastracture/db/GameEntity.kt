@@ -1,6 +1,6 @@
-package com.tei.tenis.point.tenis.infrastracture.db
+package com.tei.tenis.point.infrastracture.db
 
-import com.tei.tenis.point.tenis.domain.game.Game
+import com.tei.tenis.point.domain.game.Game
 import javax.persistence.*
 
 

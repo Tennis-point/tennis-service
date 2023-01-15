@@ -1,4 +1,4 @@
-package com.tei.tenis.point.tenis.domain.game
+package com.tei.tenis.point.domain.game
 
 class Player(val side: String){
 

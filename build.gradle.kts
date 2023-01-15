@@ -24,17 +24,12 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web:2.7.6")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa:2.7.6")
-    //implementation("org.hibernate:hibernate-core:6.1.5.Final")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("javax.xml.bind:jaxb-api:2.3.1")
-
-    //implementation("org.springframework.kafka:spring-kafka")
-    //implementation("io.lettuce:lettuce-core:6.2.1.RELEASE")
+    implementation("io.jsonwebtoken:jjwt:0.9.1")
     runtimeOnly("com.h2database:h2:2.1.214")
-    // runtimeOnly("com.mysql:mysql-connector-j")
     testImplementation("org.springframework.boot:spring-boot-starter-test:2.7.5")
-//    testImplementation("org.springframework.kafka:spring-kafka-test")
 }
 
 tasks.withType<KotlinCompile> {

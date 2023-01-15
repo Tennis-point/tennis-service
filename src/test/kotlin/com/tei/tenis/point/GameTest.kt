@@ -1,6 +1,6 @@
 
-import com.tei.tenis.point.tenis.domain.game.*
-import com.tei.tenis.point.tenis.domain.game.TennisPoint
+import com.tei.tenis.point.domain.game.*
+import com.tei.tenis.point.domain.game.Set
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test

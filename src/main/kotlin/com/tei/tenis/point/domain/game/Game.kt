@@ -1,4 +1,4 @@
-package com.tei.tenis.point.tenis.domain.game
+package com.tei.tenis.point.domain.game
 
 class Game(val p1: Player, val p2: Player, val sets: MutableList<Set>) {
     var gameId: String? = null

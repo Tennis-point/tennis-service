@@ -1,4 +1,4 @@
-package com.tei.tenis.point.tenis
+package com.tei.tenis.point
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

@@ -1,11 +1,11 @@
-package com.tei.tenis.point.tenis.app
+package com.tei.tenis.point.app
 
-import com.tei.tenis.point.tenis.GameRepositoryFake
-import com.tei.tenis.point.tenis.domain.game.Game
-import com.tei.tenis.point.tenis.domain.game.TennisPoint
-import com.tei.tenis.point.tenis.infrastracture.db.GameEntity
-import com.tei.tenis.point.tenis.infrastracture.db.GameMapper
-import com.tei.tenis.point.tenis.infrastracture.db.GameRepositorySql
+import com.tei.tenis.point.GameRepositoryFake
+import com.tei.tenis.point.domain.game.Game
+import com.tei.tenis.point.domain.game.TennisPoint
+import com.tei.tenis.point.infrastracture.db.GameEntity
+import com.tei.tenis.point.infrastracture.db.GameMapper
+import com.tei.tenis.point.infrastracture.db.GameRepositorySql
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
@@ -15,8 +15,8 @@ import java.util.*
 
 internal class TennisGameServiceTest {
 
-    val repository: GameRepositorySql = GameRepositoryFake()
-    val tennisService: TennisGameService = TennisGameService(repository);
+    private val repository: GameRepositorySql = GameRepositoryFake()
+    private val tennisService: TennisGameService = TennisGameService(repository);
 
     @Test
     fun addPoint() {

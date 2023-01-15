@@ -1,7 +1,7 @@
-package com.tei.tenis.point.tenis.infrastracture.db
+package com.tei.tenis.point.infrastracture.db
 
-import com.tei.tenis.point.tenis.domain.game.*
-import com.tei.tenis.point.tenis.domain.game.Set
+import com.tei.tenis.point.domain.game.*
+import com.tei.tenis.point.domain.game.Set
 import java.util.*
 
 class GameMapper {
@@ -9,8 +9,9 @@ class GameMapper {
     fun toDomain(gameEntity: GameEntity): Game {
         val sets = gameEntity.sets.map { setEntity -> toSet(setEntity) }.toMutableList()
         val game = Game(Player("p1"), Player("p2"), sets)
-        game.done = !gameEntity.winner.isNullOrBlank()
+        game.done = !gameEntity.winner.isNullOrBlank() && gameEntity.winner != "null"
         game.gameId = gameEntity.gameId
+        game.winner = if (gameEntity.winner == null) null; else Player(gameEntity.winner!!)
         return game
     }
 
@@ -43,7 +44,7 @@ class GameMapper {
 
     fun toEntity(game: Game, userId: String): GameEntity {
         val ge = GameEntity()
-        ge.winner = game.winner.toString()
+        ge.winner = if (game.winner == null) null else game.winner!!.side
         if (game.gameId == null) {
             game.gameId = UUID.randomUUID().toString()
         }

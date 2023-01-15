@@ -1,23 +1,21 @@
-package com.tei.tenis.point.tenis
+package com.tei.tenis.point
 
-import com.tei.tenis.point.tenis.app.TennisGameService
-import com.tei.tenis.point.tenis.domain.game.Game
-import com.tei.tenis.point.tenis.infrastracture.db.GameEntity
+import com.tei.tenis.point.app.TennisGameService
+import com.tei.tenis.point.domain.game.Game
+import com.tei.tenis.point.infrastracture.db.GameEntity
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
+@CrossOrigin(origins = ["http://localhost:4200"], maxAge = 3600)
 class TennisGameController(
     private val gameService: TennisGameService
 ) {
     private val log: Logger = LoggerFactory.getLogger(TennisGameController::class.java)
 
     @PostMapping("/game/{userId}/start")
-    fun start(@PathVariable("userId") userId: String): Game {
+    fun start(@PathVariable("userId") userId: String): GameEntity {
         log.info("GET /game/{userId}/start : Starting game for user with id : $userId");
         return gameService.startGame(userId)
     }
@@ -29,14 +27,9 @@ class TennisGameController(
     }
 
     @PostMapping("/game/{gameId}/point/{side}")
-    fun addPoint(@PathVariable("gameId") gameId: String, @PathVariable("side") side: String): Game {
+    fun addPoint(@PathVariable("gameId") gameId: String, @PathVariable("side") side: String): GameEntity {
         log.info("POST /game/{id}/point/{side} : Add point to $side, game $gameId")
         return gameService.addPoint(gameId, side);
     }
 
-    @GetMapping("/game/{gameId}/")
-    fun getByGameId(@PathVariable("gameId") gameId: String): Game {
-        log.info("GET /game/{gameId}/ : Finding game by gameId $gameId")
-        return gameService.gameById(gameId);
-    }
 }

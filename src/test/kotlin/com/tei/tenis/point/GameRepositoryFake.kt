@@ -1,9 +1,9 @@
-package com.tei.tenis.point.tenis
+package com.tei.tenis.point
 
-import com.tei.tenis.point.tenis.app.GameRepository
-import com.tei.tenis.point.tenis.domain.game.Game
-import com.tei.tenis.point.tenis.infrastracture.db.GameEntity
-import com.tei.tenis.point.tenis.infrastracture.db.GameRepositorySql
+import com.tei.tenis.point.app.GameRepository
+import com.tei.tenis.point.domain.game.Game
+import com.tei.tenis.point.infrastracture.db.GameEntity
+import com.tei.tenis.point.infrastracture.db.GameRepositorySql
 import org.springframework.data.domain.Example
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
