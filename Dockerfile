@@ -1,5 +1,5 @@
-FROM --platform=linux/amd64 eclipse-temurin:17_35-jdk-alpine
+
+FROM --platform=linux/amd64 eclipse-temurin:17-jdk-alpine
 VOLUME /tmp
-ARG JAR_FILE
-COPY ${JAR_FILE} app.jar
+COPY build/libs/tenis-service-0.0.1-SNAPSHOT.jar app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]

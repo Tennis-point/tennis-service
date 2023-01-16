@@ -27,7 +27,7 @@ internal class TennisGameServiceTest {
         // when
         val g = tennisService.addPoint("gameId", "p1");
         // then
-        assertEquals(TennisPoint.FIFTEEN, g.sets[0].gems[0].p1Point)
-        assertEquals(TennisPoint.ZERO, g.sets[0].gems[0].p2Point)
+        assertEquals(TennisPoint.FIFTEEN.name, g.sets[0].gems[0].p1Points)
+        assertEquals(TennisPoint.ZERO.name, g.sets[0].gems[0].p2Points)
     }
 }

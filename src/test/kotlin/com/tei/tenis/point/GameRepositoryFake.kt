@@ -16,6 +16,9 @@ import java.util.function.Function
 class GameRepositoryFake : GameRepositorySql {
 
     var map: HashMap<String, GameEntity> = HashMap()
+    override fun findByUserId(userId: String): Collection<GameEntity> {
+        TODO("Not yet implemented")
+    }
 
     override fun <S : GameEntity?> save(entity: S): S {
         if (entity != null) {
